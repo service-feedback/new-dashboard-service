@@ -1,14 +1,14 @@
 import PieChart from "components/charts/PieChart";
-import { pieChartData, pieChartOptions } from "variables/charts";
+import { pieChartData2,  pieChartOptions2 } from "variables/charts";
 import Card from "components/card";
 
-const PieChartCard = () => {
+const PieChartCard2 = () => {
   return (
     <Card extra="rounded-[20px] p-3">
       <div className="flex flex-row justify-between px-3 pt-2">
         <div>
           <h4 className="text-lg font-bold text-navy-700 dark:text-white">
-           Recommendation
+            Customer Satisfaction
           </h4>
         </div>
 
@@ -22,7 +22,7 @@ const PieChartCard = () => {
       </div>
 
       <div className="mb-auto flex h-[220px] w-full items-center justify-center">
-        <PieChart options={pieChartOptions} series={pieChartData} />
+        <PieChart options={pieChartOptions2} series={pieChartData2} />
       </div>
       <div className="flex flex-row !justify-between rounded-2xl px-6 py-3 shadow-2xl shadow-shadow-500 dark:!bg-navy-700 dark:shadow-none">
         <div className="flex flex-col items-center justify-center">
@@ -31,7 +31,7 @@ const PieChartCard = () => {
             <p className="ml-1 text-sm font-normal text-gray-600">Good</p>
           </div>
           <p className="mt-px text-xl font-bold text-navy-700  dark:text-white">
-          {pieChartData[0]}%
+          {pieChartData2[0]}%
           </p>
         </div>
 
@@ -43,7 +43,7 @@ const PieChartCard = () => {
             <p className="ml-1 text-sm font-normal text-gray-600">Average</p>
           </div>
           <p className="mt-px text-xl font-bold text-navy-700 dark:text-white">
-          {pieChartData[1]}%
+          {pieChartData2[1]}%
           </p>
         </div>
         <div className="h-11 w-px bg-gray-300 dark:bg-white/10" />
@@ -53,7 +53,7 @@ const PieChartCard = () => {
             <p className="ml-1 text-sm font-normal text-gray-600"> Poor</p>
           </div>
           <p className="mt-px text-xl font-bold text-navy-700  dark:text-white">
-          {pieChartData[2]}%
+          {pieChartData2[2]}%
           </p>
         </div>
       </div>
@@ -61,4 +61,4 @@ const PieChartCard = () => {
   );
 };
 
-export default PieChartCard;
+export default PieChartCard2;
