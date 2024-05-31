@@ -353,13 +353,13 @@ const Login = () => {
               )}
 
              
-              <FormControlLabel
-                control={<Checkbox value="remember" color="primary" />}
-                label="Remember me"
-                sx={{
-                  display: otpRequired ? "none" : "block", // Hide if OTP input is required
-                }}
-              />
+{!otpRequired && (
+  <FormControlLabel
+    control={<Checkbox value="remember" color="primary" />}
+    label="Remember me"
+  />
+)}
+
               {loading ? ( // Show loading indicator if loading state is true
                 <Box
                   sx={{
