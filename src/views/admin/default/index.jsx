@@ -14,38 +14,40 @@ import { TfiFaceSad } from "react-icons/tfi";
 import { LiaAngry } from "react-icons/lia";
 import { axioscall } from 'variables/charts';
 
-console.log( "countsOfEmojis  "+axioscall.data.countsOfEmojis)
+console.log( "countsOfEmojis  "+axioscall.data.persentageOfemojis)
 const Dashboard = () => {
   // const [emojiData, setEmojiData] = useState([]);
 
   return (
     <div>
+
+      
       {/* Card widget */}
       <div className="mt-3 grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-3 3xl:grid-cols-5">
         <Widget
           icon={<IoHappyOutline className="h-8 w-8" />}
           title={"Excellent"}
-          subtitle={axioscall.data.countsOfEmojis[0]}
+          subtitle={axioscall.data.persentageOfemojis[0]+"%" } 
         />
         <Widget
           icon={<BsEmojiSmile className="h-7 w-7" />}
           title={"Very Good"}
-          subtitle={axioscall.data.countsOfEmojis[1]}
+          subtitle={axioscall.data.persentageOfemojis[1] +"%"}
         />
         <Widget
           icon={<PiSmileyMeh className="h-8 w-8" />}
           title={"Good"}
-          subtitle={axioscall.data.countsOfEmojis[2]}
+          subtitle={axioscall.data.persentageOfemojis[2] +"%"}
         />
         <Widget
           icon={<TfiFaceSad className="h-7 w-7" />}
           title={"Average"}
-          subtitle={axioscall.data.countsOfEmojis[3]}
+          subtitle={axioscall.data.persentageOfemojis[3]+"%"}
         />
         <Widget
           icon={<LiaAngry className="h-9 w-9" />}
           title={"Poor"}
-          subtitle={axioscall.data.countsOfEmojis[4]}
+          subtitle={axioscall.data.persentageOfemojis[4]+"%"}
         />
       </div>
 

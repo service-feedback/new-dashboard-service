@@ -3,6 +3,7 @@ import axios from "axios";
 
 let TotalFeedbackscount = null;
 let monthly_Feedback_Counts_LinearChart = null;
+let monthly_User_Counts_LinearChart =null
 let recommendation_Counts_bar_chart = null;
 let satisfactionPieChart = null;
 let recommendationPieChart = null;
@@ -11,12 +12,11 @@ export const fetchData = async (filterOption) => {
   
   try {
     console.log("Filter option:", filterOption); // Log the filter option value
-    if(filterOption ===undefined){
-      filterOption = "Last 3 Month"
-    }
+    const filter =   "Last 3 Month";
+
     const response = await axios.post(
-      "https://feedback-n4uc.onrender.com/feedbackStatistics",
-      { filter: filterOption }
+      "http://localhost:3001/feedbackStatistics",
+      { filter: filter },
       // Uncomment and use the headers if needed
       // headers: { Authorization: `Bearer ${token}` },
     );
@@ -32,23 +32,30 @@ export const fetchData = async (filterOption) => {
       recommendation_Counts_bar_chart = responseData.data.recommendation_Counts_bar_chart;
       satisfactionPieChart = responseData.data.satisfactionPieChart;
       recommendationPieChart = responseData.data.recommendationPieChart;
-    
+      monthly_User_Counts_LinearChart = responseData.data.monthly_User_Counts_LinearChart
 
     return responseData;
   } catch (error) {
     console.error("Error fetching data:", error);
-    throw error;
+    if (
+      error.response &&
+      error.response.status === 401 &&
+      error.response.data.message === "jwt expired"
+    ) {
+      window.location.href ="/login";
+    } else {
+      console.error("Error fetching data:", error);
+      
+    }
+    
   }
 };
 
 export const axioscall =  await fetchData()
 
 
-console.log("TotalFeedbackscount "+TotalFeedbackscount)
-console.log("monthly_Feedback_Counts_LinearChart  "+monthly_Feedback_Counts_LinearChart)
-console.log("recommendation_Counts_bar_chart  "+recommendation_Counts_bar_chart)
-console.log("satisfactionPieChart  "+satisfactionPieChart)
-console.log("recommendationPieChart  "+recommendationPieChart)
+console.log("monthly_User_Counts_LinearChart "+monthly_User_Counts_LinearChart.values)
+
 // Top-level static exports
 export const barChartDataDailyTraffic = [
   {
@@ -279,7 +286,7 @@ export const lineChartDataTotalSpent = [
   },
   {
     name: "Customer Data",
-    data: [3076, 4657],
+    data: monthly_User_Counts_LinearChart.values ,
     color: "#6AD2FF",
   },
 ];
