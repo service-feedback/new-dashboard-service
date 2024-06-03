@@ -15,7 +15,7 @@ export const fetchData = async (filterOption) => {
     const filter =   "Last 3 Month";
 
     const response = await axios.post(
-      "http://localhost:3001/feedbackStatistics",
+      "https://feedback-n4uc.onrender.com/feedbackStatistics",
       { filter: filter },
       // Uncomment and use the headers if needed
       // headers: { Authorization: `Bearer ${token}` },
