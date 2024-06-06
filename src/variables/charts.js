@@ -54,7 +54,7 @@ export const fetchData = async (filterOption) => {
 export const axioscall =  await fetchData()
 
 
-console.log("monthly_User_Counts_LinearChart "+monthly_User_Counts_LinearChart.values)
+console.log("satisfactionPieChart "+satisfactionPieChart)
 
 // Top-level static exports
 export const barChartDataDailyTraffic = [
@@ -348,10 +348,14 @@ export const lineChartOptionsTotalSpent = {
 };
 
 export const TotalRecommendation = recommendation_Counts_bar_chart.countOfRecommendation;
+
+// Copy code
+const recommendationCounts = recommendation_Counts_bar_chart.values.map(String);
 export const barChartDataWeeklyRevenue = [
   {
-    name: "Recommendation A",
-    data: recommendation_Counts_bar_chart.values,
+    name: "Recommendation ",
+    data: recommendationCounts,
+    // data:[20, 3, 52, 31, 24, 15, 3, 7, 8, 9, 10],
     color: "#6AD2Fa",
   },
 ];
@@ -378,7 +382,7 @@ export const barChartOptionsWeeklyRevenue = {
     },
   },
   xaxis: {
-    categories: ["0","1", "2", "3", "4", "5", "6", "7", "8", "9", "10"],
+    categories: ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10"],
     show: false,
     labels: {
       show: true,
@@ -433,18 +437,16 @@ export const barChartOptionsWeeklyRevenue = {
       opacityFrom: 0.7,
       opacityTo: 0.9,
       colorStops: [
-        [
-          {
-            offset: 0,
-            color: "#4318FF",
-            opacity: 1,
-          },
-          {
-            offset: 100,
-            color: "rgba(67, 24, 255, 1)",
-            opacity: 0.28,
-          },
-        ],
+        {
+          offset: 0,
+          color: "#4318FF",
+          opacity: 1,
+        },
+        {
+          offset: 100,
+          color: "rgba(67, 24, 255, 1)",
+          opacity: 0.28,
+        },
       ],
     },
   },
@@ -453,21 +455,133 @@ export const barChartOptionsWeeklyRevenue = {
   },
   colors: ["#5E37FF", "#6AD2FF", "#E1E9F8"],
   dataLabels: {
-    enabled: false,
+    enabled: true,
+    style: {
+      fontSize: "14px",
+      fontWeight: "bold",
+      colors: ["#000000"], // Adjust the color as needed
+    },
+    formatter: function(val) {
+      return val; // Return the value to be displayed
+    },
+    offsetY: -25, // Adjust this value to position the label above the bar
+    dropShadow: {
+      enabled: true,
+      top: 1,
+      left: 1,
+      blur: 1,
+      opacity: 0.45,
+    },
   },
   plotOptions: {
     bar: {
       borderRadius: 10,
-      columnWidth: "20px",
+      columnWidth: "45px",
+      dataLabels: {
+        position: 'top', // Place the data label at the top of the bar
+      },
     },
   },
 };
+
 
 // fetchData.js
 
 
 
+// variables/charts.js
+export const funnelChartData2 = [20, 30, 50];
 
+export const funnelChartOptions2 = {
+  chart: {
+    type: 'funnel',
+    width: '100%',
+  },
+  labels: ["Excellent, Very Good, Good", "Average", "Poor"],
+  colors: ["#552FFF", "#5fbde5", "#fbdb5c"],
+  states: {
+    hover: {
+      filter: {
+        type: 'none',
+      },
+    },
+  },
+  legend: {
+    show: false,
+  },
+  dataLabels: {
+    enabled: true,
+    style: {
+      fontSize: '14px',
+      fontWeight: 'bold',
+      colors: ["#000000"],
+    },
+    formatter: function(val) {
+      return `${val}%`;
+    },
+  },
+  tooltip: {
+    enabled: true,
+    theme: 'dark',
+    style: {
+      fontSize: '12px',
+      backgroundColor: '#000000',
+      color: '#000000',
+    },
+    marker: {
+      show: true,
+    },
+    x: {
+      show: true,
+      style: {
+        color: '#000000',
+        fontSize: '12px',
+      },
+    },
+    y: {
+      formatter: (val) => `${val}%`,
+      title: {
+        formatter: (seriesName) => seriesName,
+        style: {
+          color: '#000000',
+          fontSize: '12px',
+        },
+      },
+    },
+  },
+  plotOptions: {
+    funnel: {
+      curve: {
+        enabled: true,
+      },
+      labels: {
+        show: true,
+        name: {
+          fontSize: '16px',
+          fontWeight: 600,
+        },
+        value: {
+          fontSize: '14px',
+          fontWeight: 400,
+        },
+        total: {
+          show: true,
+          label: 'Total',
+          formatter: function (w) {
+            return w.globals.seriesTotals.reduce((a, b) => {
+              return a + b;
+            }, 0);
+          },
+        },
+      },
+    },
+  },
+  fill: {
+    colors: ["#4318FF", "#6AD2FF", "#fbdb5c"],
+  },
+};
+
+// export const  satisfactionPieChart = satisfactionPieChart
 
 
 

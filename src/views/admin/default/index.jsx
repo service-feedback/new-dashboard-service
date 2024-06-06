@@ -2,7 +2,8 @@ import React, {   } from 'react';
 import WeeklyRevenue from "views/admin/default/components/WeeklyRevenue";
 import TotalSpent from "views/admin/default/components/TotalSpent";
 import PieChartCard from "views/admin/default/components/PieChartCard";
-import PieChartCard2 from "views/admin/default/components/pieChartChard2";
+// import PieChartCard2 from "views/admin/default/components/pieChartChard2";
+import FunnelChartCard2 from 'views/admin/default/components/FunnelChartCard2';
 import { columnsDataCheck } from "./variables/columnsData";
 import Widget from "components/widget/Widget";
 import CheckTable from "views/admin/default/components/CheckTable";
@@ -69,7 +70,8 @@ const Dashboard = () => {
 
         {/* Traffic chart & Pie Chart */}
         <div className="grid grid-cols-1 gap-5 rounded-[20px] md:grid-cols-2">
-          <PieChartCard2 />
+          {/* <PieChartCard2 /> */}
+          <FunnelChartCard2 />
           <PieChartCard />
         </div>
       </div>

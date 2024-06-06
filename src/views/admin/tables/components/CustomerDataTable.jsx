@@ -201,7 +201,9 @@ const CustomerData = () => {
     const a = document.createElement("a");
     a.style.display = "none";
     a.href = url;
-    a.download = "Customer Data.xlsx";
+    const currentDate = new Date();
+    const formattedDate = currentDate.toISOString().split('T')[0];
+    a.download =  `Customer Data.xlsx-${formattedDate}`;
     document.body.appendChild(a);
     a.click();
     window.URL.revokeObjectURL(url);
