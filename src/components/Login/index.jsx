@@ -61,7 +61,7 @@ const Login = () => {
     } else {
       try {
         const response = await fetch(
-          "https://feedback-n4uc.onrender.com/login",
+          "https://feedback-nine-jade.vercel.app/login",
           {
             method: "POST",
             headers: {
@@ -105,7 +105,7 @@ const Login = () => {
   const handleOtpVerification = async () => {
     try {
       const response = await fetch(
-        "https://feedback-n4uc.onrender.com/otpVerification",
+        "https://feedback-nine-jade.vercel.app/otpVerification",
         {
           method: "POST",
           headers: {
@@ -147,7 +147,7 @@ const Login = () => {
 
     try {
       const response = await fetch(
-        "https://feedback-n4uc.onrender.com/resendOtp",
+        "https://feedback-nine-jade.vercel.app/resendOtp",
         {
           method: "POST",
           headers: {

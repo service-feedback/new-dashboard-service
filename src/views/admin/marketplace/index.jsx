@@ -70,7 +70,7 @@ const Marketplace = () => {
       let res;
       if (selectedFilter === "Between" && startDate && endDate) {
         res = await axios.post(
-          "https://feedback-n4uc.onrender.com/filtersfeedbacks",
+          "https://feedback-nine-jade.vercel.app/filtersfeedbacks",
           {
             filter: selectedFilter,
             startDate: startDate,
@@ -82,7 +82,7 @@ const Marketplace = () => {
         );
       } else {
         res = await axios.post(
-          "https://feedback-n4uc.onrender.com/filtersfeedbacks",
+          "https://feedback-nine-jade.vercel.app/filtersfeedbacks",
           {
             filter: selectedFilter,
           },

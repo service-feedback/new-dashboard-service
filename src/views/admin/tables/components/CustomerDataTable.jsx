@@ -53,7 +53,7 @@ const CustomerData = () => {
       setLoading(true); // Start loading
       try {
         const token = localStorage.getItem("authToken");
-        const res = await axios.get("https://feedback-n4uc.onrender.com/getUserData", {
+        const res = await axios.get("https://feedback-nine-jade.vercel.app/getUserData", {
           headers: { Authorization: `Bearer ${token}` },
         });
         const columnsData = [
@@ -135,7 +135,7 @@ const CustomerData = () => {
 
       try {
         await axios.post(
-          "https://feedback-n4uc.onrender.com/importUser",
+          "https://feedback-nine-jade.vercel.app/importUser",
           formData,
           {
             headers: {

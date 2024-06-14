@@ -15,7 +15,7 @@ export const fetchData = async (filterOption) => {
     const filter =   "Last 3 Month";
 
     const response = await axios.post(
-      "https://feedback-n4uc.onrender.com/feedbackStatistics",
+      "https://feedback-nine-jade.vercel.app/feedbackStatistics",
       { filter: filter },
       // Uncomment and use the headers if needed
       // headers: { Authorization: `Bearer ${token}` },
