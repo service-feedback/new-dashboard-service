@@ -61,7 +61,7 @@ const Login = () => {
     } else {
       try {
         const response = await fetch(
-          "https://feedback-nine-jade.vercel.app/login",
+          "https://feedback-git-main-feedback-services-projects.vercel.app/login",
           {
             method: "POST",
             headers: {
@@ -105,7 +105,7 @@ const Login = () => {
   const handleOtpVerification = async () => {
     try {
       const response = await fetch(
-        "https://feedback-nine-jade.vercel.app/otpVerification",
+        "https://feedback-git-main-feedback-services-projects.vercel.app/otpVerification",
         {
           method: "POST",
           headers: {
@@ -147,7 +147,7 @@ const Login = () => {
 
     try {
       const response = await fetch(
-        "https://feedback-nine-jade.vercel.app/resendOtp",
+        "https://feedback-git-main-feedback-services-projects.vercel.app/resendOtp",
         {
           method: "POST",
           headers: {
