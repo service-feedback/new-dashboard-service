@@ -135,7 +135,7 @@ const CustomerData = () => {
 
       try {
         await axios.post(
-          "https://feedback2 -nine-jade.vercel.app/importUser",
+          "https://feedback-git-main-feedback-services-projects.vercel.app/importUser",
           formData,
           {
             headers: {
