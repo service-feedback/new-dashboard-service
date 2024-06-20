@@ -192,30 +192,45 @@ const CustomerData = () => {
 
   const handleDownloadXLSX = () => {
     const wb = XLSX.utils.book_new();
-    const wsData = [headers, ...dataRows];
-    const ws = XLSX.utils.aoa_to_sheet(wsData);
-    XLSX.utils.book_append_sheet(wb, ws, "Sheet1");
-    const wbout = XLSX.write(wb, { bookType: "xlsx", type: "binary" });
-    const blob = new Blob([s2ab(wbout)], { type: "application/octet-stream" });
-    const url = window.URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.style.display = "none";
-    a.href = url;
-    const currentDate = new Date();
-    const formattedDate = currentDate.toISOString().split('T')[0];
-    a.download =  `Customer Data.xlsx-${formattedDate}`;
-    document.body.appendChild(a);
-    a.click();
-    window.URL.revokeObjectURL(url);
-    document.body.removeChild(a);
-  };
+    // const wb = XLSX.utils.book_new();
+  const wsData = [headers, ...dataRows];
+  const ws = XLSX.utils.aoa_to_sheet(wsData);
+  XLSX.utils.book_append_sheet(wb, ws, "Sheet1");
 
-  function s2ab(s) {
+  // Generate XLSX file as a binary string
+  const wbout = XLSX.write(wb, { bookType: "xlsx", type: "binary" });
+
+  // Convert binary string to ArrayBuffer
+  const s2ab = (s) => {
     const buf = new ArrayBuffer(s.length);
     const view = new Uint8Array(buf);
-    for (let i = 0; i < s.length; i++) view[i] = s.charCodeAt(i) & 0xff;
+    for (let i = 0; i < s.length; i++) view[i] = s.charCodeAt(i) & 0xFF;
     return buf;
-  }
+  };
+
+  // Create a Blob from the ArrayBuffer
+  const blob = new Blob([s2ab(wbout)], { type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" });
+
+  // Create download link
+  const url = window.URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.style.display = "none";
+  a.href = url;
+  const currentDate = new Date();
+  const formattedDate = currentDate.toISOString().split('T')[0];
+  a.download = `Customer Data-${formattedDate}.xlsx`;
+  document.body.appendChild(a);
+  a.click();
+  window.URL.revokeObjectURL(url);
+  document.body.removeChild(a);
+  };
+
+  // function s2ab(s) {
+  //   const buf = new ArrayBuffer(s.length);
+  //   const view = new Uint8Array(buf);
+  //   for (let i = 0; i < s.length; i++) view[i] = s.charCodeAt(i) & 0xff;
+  //   return buf;
+  // }
 
   const handleOpen = () => {
     setOpen(true);
