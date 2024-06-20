@@ -101,6 +101,8 @@ const CustomerData = () => {
     nextPage,
     canPreviousPage,
     canNextPage,
+    pageCount,
+    setPageSize
   } = tableInstance;
 
   const handleFileChange = (event) => {
@@ -359,7 +361,7 @@ const CustomerData = () => {
       )}
 
       {/* Pagination */}
-      <div className="flex justify-between items-center mt-4">
+      {/* <div className="flex justify-between items-center mt-4">
         <div className="flex items-center">
           <button onClick={() => previousPage()} disabled={!canPreviousPage}>
             {"<"} Previous
@@ -374,6 +376,40 @@ const CustomerData = () => {
           <strong>
             {pageIndex + 1} of {Math.ceil(data.length / pageSize)}
           </strong>{" "}
+        </div>
+      </div> */}
+      <div className="mt-4 flex items-center justify-between">
+        <div>
+          <button onClick={() => previousPage()} disabled={!canPreviousPage}>
+            {"<"} Previous
+          </button>
+          <span className="mx-2">|</span>
+          <button
+            onClick={() => nextPage()}
+            disabled={!canNextPage}
+            // className="px-3 py-1 rounded bg-gray-200 text-gray-700"
+          >
+            Next {">"}
+          </button>
+        </div>
+        <div>
+          <span>
+            Page{" "}
+            <strong>
+              {pageIndex + 1} of {pageCount}
+            </strong>{" "}
+          </span>
+          <select
+            value={pageSize}
+            onChange={(e) => setPageSize(Number(e.target.value))}
+            className="mx-2 rounded border border-gray-300 px-2 py-1 text-gray-900 dark:border-gray-700 dark:bg-gray-900 dark:text-white"
+          >
+            {[10, 20, 30, 40, 50,100].map((pageSize) => (
+              <option key={pageSize} value={pageSize}>
+                Show {pageSize}
+              </option>
+            ))}
+          </select>
         </div>
       </div>
 
